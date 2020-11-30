@@ -1,5 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">      
+        <ion-menu-button ></ion-menu-button>      
+    </ion-buttons>
     <ion-title>
       Catalogo
     </ion-title>
@@ -7,28 +10,29 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-slides>    
-    <ion-slide>
+  <ion-slides *ngIf="products.length">    
+    <ion-slide *ngFor="let item of products; index as i">
       <ion-card>
-        <img src="https://picsum.photos/id/237/300/300">
+        <img src="{{ item.photo }}">
         <ion-card-header>
-          <ion-card-title>Perro</ion-card-title>
-          <ion-card-subtitle>Descrpición del perro</ion-card-subtitle>
+          <ion-card-title>{{item.name}}</ion-card-title>
+          <ion-card-subtitle>{{item.description}}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
           <div>
             <div>
               <ion-chip color="primary">
-                <ion-label>$100</ion-label>
+                <ion-label>{{item.price |currency}}</ion-label>
               </ion-chip>
             </div>
           </div>
+          
           <ion-fab vertical="top" horizontal="end">
             <ion-fab-button>
               <ion-icon name="add"></ion-icon>
             </ion-fab-button>            
             <ion-fab-list side="top">
-              <ion-fab-button color="secondary">
+              <ion-fab-button color="secondary" (click)="addToCart(item)">
                 <ion-icon name="cart"></ion-icon>
               </ion-fab-button>
             </ion-fab-list>

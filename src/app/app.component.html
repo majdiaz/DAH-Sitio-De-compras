@@ -1,3 +1,29 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane contentId="menu-content" >
+    <ion-menu contentId="menu-content" menuId="menu-content" side="start" type="overlay">      
+      <ion-content>
+        <ion-list>
+          <ion-list-header>Martín jimenez </ion-list-header>
+          <ion-note>maaljimenezdi@ittepic.com.mx</ion-note>
+
+          <ion-menu-toggle auto-hide="false"> 
+            <ion-item [routerLink]="['/home']">
+              <ion-icon name="home"></ion-icon>
+              <ion-label>Inicio</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          
+          <ion-menu-toggle auto-hide="false"> 
+            <ion-item [routerLink]="['/cart']">
+              <ion-icon name="cart"></ion-icon>
+              <ion-label>Carrito</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+        
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="menu-content"></ion-router-outlet>
+  </ion-split-pane>
+  
 </ion-app>
